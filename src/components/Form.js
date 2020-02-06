@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import StepTwo from "./StepTwo";
+import display from "../images/password-display.png";
 
 function Form(props) {
+  const [type, setType] = useState("password");
+  const [type2, setType2] = useState("password");
+
   return props.step === 1 ? (
     <form
       onSubmit={e => {
@@ -38,22 +42,40 @@ function Form(props) {
       />
       <br />
       Password :
-      <input
-        placeholder="IErEaCtEuR2020"
-        type="password"
-        name="password"
-        value={props.valuePassword}
-        onChange={props.handlePassword}
-      />
+      <div className="blocPassword">
+        <input
+          placeholder="NIErEaCtEuR2020"
+          type={type2}
+          name="password"
+          value={props.valuePassword}
+          onChange={props.handlePassword}
+        />
+        <img
+          className="eye"
+          src={display}
+          onClick={() => {
+            setType2("text");
+          }}
+        ></img>
+      </div>
       <br />
       Confirm your password :
-      <input
-        placeholder="NIErEaCtEuR2020"
-        type="password"
-        name="passwordConfirm"
-        value={props.valuePasswordConfirm}
-        onChange={props.handlePasswordConfirm}
-      />
+      <div className="blocPassword">
+        <input
+          placeholder="NIErEaCtEuR2020"
+          type={type}
+          name="passwordConfirm"
+          value={props.valuePasswordConfirm}
+          onChange={props.handlePasswordConfirm}
+        />
+        <img
+          className="eye"
+          src={display}
+          onClick={() => {
+            setType("text");
+          }}
+        ></img>
+      </div>
       <br />
       <button className="btn-register" type="submit">
         Register
